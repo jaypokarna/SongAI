@@ -33,11 +33,7 @@ handler.setFormatter(formatter)
 app.logger.addHandler(handler)
 app.logger.setLevel(logging.INFO)
 
-# Environment variables validation
-required_env_vars = ['ANTHROPIC_API_KEY', 'FLASK_ENV']
-missing_vars = [var for var in required_env_vars if not os.getenv(var)]
-if missing_vars:
-    raise EnvironmentError(f"Missing required environment variables: {', '.join(missing_vars)}")
+
 
 # Set up anthropic API client
 client = anthropic.Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
